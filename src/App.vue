@@ -1,10 +1,13 @@
 <script>
 
 import TheClock from "./components/TheClock.vue";
+import FetchKide from "./components/FetchKide.vue";
 
 export default {
   components: {
-    TheClock
+    TheClock,
+    FetchKide,
+
   },
 }
 
@@ -16,6 +19,8 @@ export default {
   <div id="theClock">
     <TheClock />
   </div>
+
+  <FetchKide bim="https://api.kide.app/api/companies/8216a1bc-760d-407b-9c77-5e26a041a25c"/>
 </template>
 
 <style scoped>
@@ -31,6 +36,7 @@ export default {
   height: 500px;
   width: 500px;
   opacity: 0.3;
+  z-index: -1;
   /* kan vara full opacity as well */
 }
 

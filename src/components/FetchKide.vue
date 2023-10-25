@@ -4,7 +4,7 @@ export default {
     data() {
         return {
             kideData: [],
-            url: "https://portalvhdsp62n0yt356llm.blob.core.windows.net/bailataan-mediaitems/"
+            imgUrl: "https://portalvhdsp62n0yt356llm.blob.core.windows.net/bailataan-mediaitems/"
         }
     },
 
@@ -33,7 +33,7 @@ export default {
         <h2 id="forening" v-html="kideData.model.company.name"></h2>
         <div id="events">
             <div class="event" v-for="event in kideData.model.events" :key="event.id">
-                <img class="img" :src="url + event.mediaFilename">
+                <img class="img" :src="imgUrl + event.mediaFilename">
                 <div class="name">{{ event.name }}</div>
                 <div class="place">{{ event.place }}</div>
             </div>
@@ -61,12 +61,27 @@ h2 {
     color: white;
     border-radius: 10px;
     padding: 50px;
-
+    width: 1300px;
+    height: 580px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x:hidden;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    
 }
+.container::-webkit-scrollbar {
+        display: none;
+    }
 
-#events{
-    display:flex;
+#events {
+    display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .event {
@@ -78,6 +93,12 @@ h2 {
     border-radius: 10px;
 }
 
+.event:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.1s;
+}
+
 .name {
     text-align: center;
     font-size: 35px;
@@ -85,5 +106,4 @@ h2 {
 
 .place {
     text-align: center;
-}
-</style>
+}</style>

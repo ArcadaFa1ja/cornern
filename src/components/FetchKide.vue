@@ -3,11 +3,12 @@
 export default {
     data() {
         return {
-            kideData: []
+            kideData: [],
+            url: "https://portalvhdsp62n0yt356llm.blob.core.windows.net/bailataan-mediaitems/"
         }
     },
 
-    props:{
+    props: {
         bim: String
     },
 
@@ -19,15 +20,6 @@ export default {
             this.kideData = data;
             console.log(this.kideData);
         },
-
-        async fetchImages(bam){
-            console.log("fetchImages()");
-            const res = await fetch("https://corsproxy.io/?https://portalvhdsp62n0yt356llm.blob.core.windows.net/bailataan-mediaitems/"+bam);
-            const data = await res.blob();
-            const img = URL.createObjectURL(data);
-            console.log(img);
-            return img;
-        }
     },
     created() {
         this.fetchApi(this.bim);
@@ -39,10 +31,12 @@ export default {
 <template>
     <div class="container">
         <h2 id="forening" v-html="kideData.model.company.name"></h2>
-        <div class="event" v-for="event in kideData.model.events" :key="event.id">
-            <img :src="fetchImages(event.mediaFilename)" >
-            <div class="name">{{ event.name }}</div>
-            <div class="place">{{ event.place }}</div>
+        <div id="events">
+            <div class="event" v-for="event in kideData.model.events" :key="event.id">
+                <img class="img" :src="url + event.mediaFilename">
+                <div class="name">{{ event.name }}</div>
+                <div class="place">{{ event.place }}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -51,6 +45,13 @@ export default {
 h2 {
     font-size: 40px;
     margin: 0;
+    text-align: center;
+}
+
+.img {
+    display: block;
+    width: 500px;
+    height: auto;
 }
 
 .container {
@@ -61,6 +62,11 @@ h2 {
     border-radius: 10px;
     padding: 50px;
 
+}
+
+#events{
+    display:flex;
+    flex-direction: row;
 }
 
 .event {

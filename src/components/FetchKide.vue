@@ -11,8 +11,8 @@ export default {
         }
     },
     components: {
-    VueQr,
-  },
+        VueQr,
+    },
 
     props: {
         bim: String
@@ -31,28 +31,30 @@ export default {
     created() {
         this.fetchApi(this.bim);
     },
-    
+
 }
 
 </script>
 
 <template>
     <div class="container">
-      <h2 id="forening" v-html="kideData.model.company.name"></h2>
-      <div id="events">
-        <div class="event" v-for="event in kideData.model.events" :key="event.id">
-          <div class="image-container">
-            <img class="img" :src="imgUrl + event.mediaFilename" />
-            <div class="QR"><VueQr :value="qr + event.id" /></div>
-          </div>
-          <div class="details">
-            <div class="name">{{ event.name }}</div>
-            <div class="place">{{ event.place }}</div>
-          </div>
+        <h2 id="forening" v-html="kideData.model.company.name"></h2>
+        <div id="events">
+            <div class="event" v-for="event in kideData.model.events" :key="event.id">
+                <div class="image-container">
+                    <img class="img" :src="imgUrl + event.mediaFilename" />
+                    <div class="QR">
+                        <VueQr :value="qr + event.id" />
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="name">{{ event.name }}</div>
+                    <div class="place">{{ event.place }}</div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </template>
+</template>
 
 <style scoped>
 h2 {
@@ -98,36 +100,40 @@ h2 {
 }
 
 .event {
-  background-color: rgba(0, 0, 0, .5);
-  display: block;
-  font-size: 30px;
-  padding: 20px;
-  margin: 10px;
-  box-sizing: border-box;
-  width: 540px;
-  border-radius: 10px;
-  overflow: hidden;
+    background-color: rgba(0, 0, 0, .5);
+    display: block;
+    font-size: 30px;
+    padding: 20px;
+    margin: 10px;
+    box-sizing: border-box;
+    width: 540px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 
 .image-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+    margin:0;
+    padding:0;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .img {
-  width: 540px;
-  height: auto;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: block;
+    width: 540px;
+    height: auto;
 }
 
 
 .details {
-  background-color: rgba(0, 0, 0, .7);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
+    background-color: rgba(0, 0, 0, .7);
+    padding: 10px;
 }
 
 .name {
@@ -139,14 +145,14 @@ h2 {
 
 .place {
     text-align: center;
-    
+
 }
+
 .QR {
-    padding-right: 5%;
-  position: absolute;
-  top: 10px; 
-  right: 10px; 
-  width: 100px; 
-  height: 100px; 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+    height: 100px;
 }
 </style>

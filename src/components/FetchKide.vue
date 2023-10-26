@@ -1,12 +1,18 @@
 <script>
+import VueQr from 'qrcode.vue';
+
 
 export default {
     data() {
         return {
             kideData: [],
-            imgUrl: "https://portalvhdsp62n0yt356llm.blob.core.windows.net/bailataan-mediaitems/"
+            imgUrl: "https://portalvhdsp62n0yt356llm.blob.core.windows.net/bailataan-mediaitems/",
+            qr: "https://kide.app/events/"
         }
     },
+    components: {
+    VueQr,
+  },
 
     props: {
         bim: String
@@ -32,18 +38,21 @@ export default {
 
 <template>
     <div class="container">
-        <h2 id="forening" v-html="kideData.model.company.name"></h2>
-        <div id="events">
-            <div class="event" v-for="event in kideData.model.events" :key="event.id">
-                <img class="img" :src="imgUrl + event.mediaFilename">
-                <div class="details">
-                    <div class="name">{{ event.name }}</div>
-                    <div class="place">{{ event.place }}</div>
-                </div>
-            </div>
+      <h2 id="forening" v-html="kideData.model.company.name"></h2>
+      <div id="events">
+        <div class="event" v-for="event in kideData.model.events" :key="event.id">
+          <div class="image-container">
+            <img class="img" :src="imgUrl + event.mediaFilename" />
+            <div class="QR"><VueQr :value="qr + event.id" /></div>
+          </div>
+          <div class="details">
+            <div class="name">{{ event.name }}</div>
+            <div class="place">{{ event.place }}</div>
+          </div>
         </div>
+      </div>
     </div>
-</template>
+  </template>
 
 <style scoped>
 h2 {
@@ -89,41 +98,55 @@ h2 {
 }
 
 .event {
-    background-color: rgba(0, 0, 0, .5);
-    display: block;
-    font-size: 30px;
-    padding: 20px;
-    margin: 10px;
-    box-sizing: border-box;
-    width: 540px;
-    height: 300px;
-    border-radius: 10px;
-    overflow: hidden;
+  background-color: rgba(0, 0, 0, .5);
+  display: block;
+  font-size: 30px;
+  padding: 20px;
+  margin: 10px;
+  box-sizing: border-box;
+  width: 540px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+.image-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .img {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: block;
-    width: 540px;
-    height: auto;
+  width: 540px;
+  height: auto;
 }
 
-.details {
-    background-color: rgba(0, 0, 0, .7);
-    position: relative;
-    top: -45%;
 
+.details {
+  background-color: rgba(0, 0, 0, .7);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .name {
     text-align: center;
     font-size: 35px;
+
+    z-index: 12;
 }
 
 .place {
     text-align: center;
+    
+}
+.QR {
+    padding-right: 5%;
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+  width: 100px; 
+  height: 100px; 
 }
 </style>

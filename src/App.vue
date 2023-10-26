@@ -2,6 +2,7 @@
 
 import TheClock from "./components/TheClock.vue";
 import FetchKide from "./components/FetchKide.vue";
+import FetchMenuArcada from "./components/FetchMenuArcada.vue";
 
 export default {
   data() {
@@ -12,6 +13,7 @@ export default {
   components: {
     TheClock,
     FetchKide,
+    FetchMenuArcada,
 
   },
 
@@ -33,6 +35,10 @@ export default {
 
   <div id="theClock">
     <TheClock />
+    
+  </div>
+  <div id="theMenu">
+    <FetchMenuArcada />
   </div>
 
   <FetchKide :bim="kideUrl" />
@@ -40,6 +46,14 @@ export default {
 </template>
 
 <style scoped>
+#theMenu {
+  position: absolute;
+  top: 5vh;
+  right: 2vw;
+  height: fit-content;
+  width: fit-content;
+  background-color: white;
+}
 #logo {
   max-width: 100%;
   height: auto;

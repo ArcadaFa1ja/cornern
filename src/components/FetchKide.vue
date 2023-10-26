@@ -34,8 +34,10 @@ export default {
         <div id="events">
             <div class="event" v-for="event in kideData.model.events" :key="event.id">
                 <img class="img" :src="imgUrl + event.mediaFilename">
-                <div class="name">{{ event.name }}</div>
-                <div class="place">{{ event.place }}</div>
+                <div class="details">
+                    <div class="name">{{ event.name }}</div>
+                    <div class="place">{{ event.place }}</div>
+                </div>
             </div>
         </div>
     </div>
@@ -46,17 +48,17 @@ h2 {
     font-size: 40px;
     margin: 0;
     text-align: center;
-}
-
-.img {
-    display: block;
-    width: 500px;
-    height: auto;
+    margin-bottom: 20px;
 }
 
 .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     background-color: rgba(0, 0, 0, .5);
     color: white;
     border-radius: 10px;
@@ -65,16 +67,17 @@ h2 {
     height: 580px;
     box-sizing: border-box;
     overflow-y: auto;
-    overflow-x:hidden;
+    overflow-x: hidden;
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
-    
+
 }
+
 .container::-webkit-scrollbar {
-        display: none;
-    }
+    display: none;
+}
 
 #events {
     display: flex;
@@ -90,13 +93,35 @@ h2 {
     font-size: 30px;
     padding: 20px;
     margin: 10px;
+    box-sizing: border-box;
+    width: 540px;
+    height: 300px;
     border-radius: 10px;
+    transition: 0.1s;
+    overflow: hidden;
 }
 
-.event:hover{
+.event:hover {
     cursor: pointer;
     transform: scale(1.1);
     transition: 0.1s;
+}
+
+.img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 540px;
+    height: auto;
+}
+
+.details{
+    background-color: rgba(0, 0, 0, .7);
+    position: relative;
+    top: -45%;
+    
 }
 
 .name {

@@ -20,10 +20,16 @@ export default {
             this.kideData = data;
             console.log(this.kideData);
         },
+
     },
     created() {
         this.fetchApi(this.bim);
-    }
+    },
+
+    updated() {
+        console.log("updated");
+    },
+    
 }
 
 </script>
@@ -40,6 +46,7 @@ export default {
                 </div>
             </div>
         </div>
+        <img @click="$emit('toggleEvents')" id="rightArrow" src="src/assets/images/rightarrow.svg" alt="rightarrow">
     </div>
 </template>
 
@@ -48,7 +55,6 @@ h2 {
     font-size: 40px;
     margin: 0;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .container {
@@ -62,7 +68,7 @@ h2 {
     background-color: rgba(0, 0, 0, .5);
     color: white;
     border-radius: 10px;
-    padding: 50px;
+    padding: 0;
     width: 1300px;
     height: 580px;
     box-sizing: border-box;
@@ -77,6 +83,24 @@ h2 {
 
 .container::-webkit-scrollbar {
     display: none;
+}
+
+#rightArrow {
+    position: absolute;
+    top: 20%;
+    left:90%;
+    transform: translate(-50%, -50%);
+    height: 100px;
+    width: 100px;
+    z-index: 1;
+    filter: invert(1);
+    transition: .1s;
+}
+
+#rightArrow:hover {
+    cursor: pointer;
+    scale: 1.1;
+    transition: .1s;
 }
 
 #events {
@@ -117,11 +141,11 @@ h2 {
     height: auto;
 }
 
-.details{
+.details {
     background-color: rgba(0, 0, 0, .7);
     position: relative;
     top: -45%;
-    
+
 }
 
 .name {
@@ -131,4 +155,5 @@ h2 {
 
 .place {
     text-align: center;
-}</style>
+}
+</style>

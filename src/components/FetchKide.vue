@@ -25,10 +25,6 @@ export default {
     created() {
         this.fetchApi(this.bim);
     },
-
-    updated() {
-        console.log("updated");
-    },
     
 }
 
@@ -46,7 +42,6 @@ export default {
                 </div>
             </div>
         </div>
-        <img @click="$emit('toggleEvents')" id="rightArrow" src="src/assets/images/rightarrow.svg" alt="rightarrow">
     </div>
 </template>
 
@@ -85,24 +80,6 @@ h2 {
     display: none;
 }
 
-#rightArrow {
-    position: absolute;
-    top: 20%;
-    left:90%;
-    transform: translate(-50%, -50%);
-    height: 100px;
-    width: 100px;
-    z-index: 1;
-    filter: invert(1);
-    transition: .1s;
-}
-
-#rightArrow:hover {
-    cursor: pointer;
-    scale: 1.1;
-    transition: .1s;
-}
-
 #events {
     display: flex;
     flex-direction: row;
@@ -121,14 +98,7 @@ h2 {
     width: 540px;
     height: 300px;
     border-radius: 10px;
-    transition: 0.1s;
     overflow: hidden;
-}
-
-.event:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.1s;
 }
 
 .img {

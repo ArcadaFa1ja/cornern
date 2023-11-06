@@ -3,18 +3,21 @@
 import TheClock from "./components/TheClock.vue";
 import FetchKide from "./components/FetchKide.vue";
 import FetchMenuArcada from "./components/FetchMenuArcada.vue";
+import EventsCalendar from "./components/EventsCalendar.vue";
 
 export default {
   data() {
     return {
-      kideUrl: "https://api.kide.app/api/companies/8216a1bc-760d-407b-9c77-5e26a041a25c"
+      kideUrl: "https://api.kide.app/api/companies/8216a1bc-760d-407b-9c77-5e26a041a25c",
+      eventCalendar: "https://corsproxy.io/?https://calendar.google.com/calendar/ical/tlk.fi_j78ecj51va7764f75fhkrotsrc%40group.calendar.google.com/public/basic.ics",
+      cornerCalendar: "https://corsproxy.io/?https://calendar.google.com/calendar/ical/tlk.fi_nnc4oospos16o4aci02v9o7cr8%40group.calendar.google.com/public/basic.ics"
     }
   },
   components: {
     TheClock,
     FetchKide,
     FetchMenuArcada,
-
+    EventsCalendar,
   },
 
   methods: {
@@ -48,11 +51,11 @@ export default {
     </div>
 
     <div id="componentEventCalendar">
-      event calendar goes here
+      <EventsCalendar :bim="eventCalendar" />
     </div>
 
     <div id="componentCornerCalendar">
-      corner calendar goes here
+      <EventsCalendar :bim="cornerCalendar" />  
     </div>
 
 
@@ -60,6 +63,7 @@ export default {
 </template>
 
 <style scoped>
+
 #componentMaster {
   width: 100vw;
   height: 100vh;

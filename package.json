@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "ical": "^0.8.0",
     "pinia": "^2.1.7",
     "qrcode.vue": "^3.4.1",
     "vue": "^3.3.4"

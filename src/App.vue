@@ -17,14 +17,8 @@ export default {
 
   },
 
-  methods:{
-    switchOrg(){
-      if(this.currentOrg === 0){
-        this.currentOrg = 1;
-      } else {
-        this.currentOrg = 0;
-      }
-    }
+  methods: {
+
   }
 }
 
@@ -35,18 +29,59 @@ export default {
 
   <div id="theClock">
     <TheClock />
-    
-  </div>
-  <div id="theMenu">
-    <FetchMenuArcada />
   </div>
 
-  <FetchKide :bim="kideUrl" />
+  <div id="componentMaster">
 
+    <!--<div id="componentMenu">
+      <FetchMenuArcada />
+    </div>
+    -->
+
+    <div id="componentKide">
+      kide goes here
+      <!-- VITTU FUNKAR INTE GENAST MAN STYLAR GÅR DEN SÖNDER
+   FÖR NÅGOT ÄR FEL I HUR DESS <template></template> ÄR 
+   SETUP ALLTSÅ KODEN DÄR RENDERAR VID FELL TILLFÄLLE ELLER 
+   NÅGOT SAKER ÄR INTE GJORDA PÅ KOSHER SÄTT 
+   BÖR FIXAS ASAP <FetchKide :bim="kideUrl" /> -->
+    </div>
+
+    <div id="componentEventCalendar">
+      event calendar goes here
+    </div>
+
+    <div id="componentCornerCalendar">
+      corner calendar goes here
+    </div>
+
+
+  </div>
 </template>
 
 <style scoped>
-#theMenu {
+#componentMaster {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+
+#componentKide {
+  flex-basis: 33%;
+}
+
+#componentEventCalendar {
+  flex-basis: 33%;
+}
+
+#componentCornerCalendar {
+  flex-basis: 50%;
+}
+
+#componentMenu {
   position: absolute;
   top: 5vh;
   right: 2vw;
@@ -54,6 +89,7 @@ export default {
   width: fit-content;
   background-color: white;
 }
+
 #logo {
   max-width: 100%;
   height: auto;

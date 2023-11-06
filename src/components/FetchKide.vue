@@ -1,7 +1,6 @@
 <script>
 import VueQr from 'qrcode.vue';
 
-
 export default {
     data() {
         return {

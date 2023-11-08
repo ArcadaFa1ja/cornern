@@ -41,7 +41,7 @@ export default {
     </div>
     -->
 
-    <div id="componentKide">
+    <div id="componentKide" class="componentBase">
       kide goes here
       <!-- VITTU FUNKAR INTE GENAST MAN STYLAR GÅR DEN SÖNDER
    FÖR NÅGOT ÄR FEL I HUR DESS <template></template> ÄR 
@@ -50,12 +50,14 @@ export default {
    BÖR FIXAS ASAP <FetchKide :bim="kideUrl" /> -->
     </div>
 
-    <div id="componentEventCalendar">
+    <div id="componentEventCalendar" class="componentBase">
+      <h2>next @ TLK</h2>
       <EventsCalendar :bim="eventCalendar" />
     </div>
 
-    <div id="componentCornerCalendar">
-      <EventsCalendar :bim="cornerCalendar" />  
+    <div id="componentCornerCalendar" class="componentBase">
+      <h2>next @ Corner</h2>
+      <EventsCalendar :bim="cornerCalendar" />
     </div>
 
 
@@ -63,7 +65,6 @@ export default {
 </template>
 
 <style scoped>
-
 #componentMaster {
   width: 100vw;
   height: 100vh;
@@ -71,18 +72,39 @@ export default {
   flex-direction: row;
   align-items: center;
   text-align: center;
+  color: white;
+}
+
+.componentBase {
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 15px;
+  margin:25px;
 }
 
 #componentKide {
   flex-basis: 33%;
+
 }
 
 #componentEventCalendar {
   flex-basis: 33%;
+
+}
+
+.componentBase h2{
+  margin:50px 0 0 0;
+  font-size:40px;
+  font-weight: 400;
 }
 
 #componentCornerCalendar {
   flex-basis: 50%;
+
 }
 
 #componentMenu {

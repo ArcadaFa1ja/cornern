@@ -5,7 +5,12 @@ import ical from 'ical';
 export default {
     data() {
         return {
-            events: [],
+            events: [{
+                event: "No evasdasdasent",
+                startdate: "No date",
+                endtime: "No date",
+                date: "No date",
+            }],
         }
     },
 
@@ -28,7 +33,7 @@ export default {
                             this.events.push({
                                 event: ev.summary,
                                 startdate: ev.start, //eller eventStartDate går med båda.
-                                endtime: ev.end.toLocaleTimeString("fi-FI"),
+                                endtime: ev.end,
                                 date: ev.start.toLocaleDateString("fi-FI"),
                             });
                         }
@@ -37,6 +42,7 @@ export default {
             }
             console.log(this.events);
             this.sortArray(this.events);
+            this.currentCornerEvent();
         },
 
         formatTime(startDate) {
@@ -45,16 +51,21 @@ export default {
             const minutes = date.getMinutes().toString().padStart(2, "0");
             return `${hours}:${minutes}`;
         },
-        formatEndTime(endTime) {
-            const parts = endTime.split(".");
-            endTime = parts[0] + ":" + parts[1];
-            return endTime;
-        },
 
         sortArray(obj) {
             obj.sort(function (a, b) {
                 return new Date(a.startdate) - new Date(b.startdate);
             });
+        },
+
+        currentCornerEvent(){
+            const today = new Date();
+            if (this.bim == "https://corsproxy.io/?https://calendar.google.com/calendar/ical/tlk.fi_nnc4oospos16o4aci02v9o7cr8%40group.calendar.google.com/public/basic.ics"){
+                   /* if (this.events[0].startdate < today && this.events[0].endtime > today) {
+                        this.$emit("updateCornerEvent", this.events[0])
+                }*/
+               this.$emit("updateCornerEvent", this.events[0])
+            }
         }
     },
     mounted() {
@@ -74,7 +85,7 @@ export default {
                 <div class="timeBox">
                     <p class="time">
                         {{ formatTime(event.startdate) }} -
-                        {{ formatEndTime(event.endtime) }}
+                        {{ formatTime(event.endtime) }}
                     </p>
                 </div>
             </div>

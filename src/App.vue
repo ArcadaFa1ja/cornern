@@ -48,12 +48,7 @@ export default {
     -->
 
     <div id="componentKide" class="componentBase">
-      kide goes here
-      <!-- VITTU FUNKAR INTE GENAST MAN STYLAR GÅR DEN SÖNDER
-   FÖR NÅGOT ÄR FEL I HUR DESS <template></template> ÄR 
-   SETUP ALLTSÅ KODEN DÄR RENDERAR VID FELL TILLFÄLLE ELLER 
-   NÅGOT SAKER ÄR INTE GJORDA PÅ KOSHER SÄTT 
-   BÖR FIXAS ASAP <FetchKide :bim="kideUrl" /> -->
+      <FetchKide :bim="kideUrl" />
     </div>
 
     <div id="componentEventCalendar" class="componentBase">
@@ -79,7 +74,7 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   text-align: center;
   color: white;
 }
@@ -97,7 +92,8 @@ export default {
 
 #componentKide {
   flex-basis: 33%;
-
+  height:fit-content;
+  background-color:transparent;
 }
 
 #componentEventCalendar {

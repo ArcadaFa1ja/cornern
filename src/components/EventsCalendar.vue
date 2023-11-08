@@ -5,12 +5,7 @@ import ical from 'ical';
 export default {
     data() {
         return {
-            events: [{
-                event: "No evasdasdasent",
-                startdate: "No date",
-                endtime: "No date",
-                date: "No date",
-            }],
+            events: [],
         }
     },
 

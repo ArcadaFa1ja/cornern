@@ -53,7 +53,7 @@ export default {
                 </div>
                 <div :style="[event.salesStarted === true ? event.salesEnded ? {'backgroundColor': 'rgba(153, 0, 0,.7)'} : {'backgroundColor': 'rgba(51, 153, 51,.7)'} : {}]" class="details" >
                     <div class="name">{{ event.name }}</div>
-                    <div class="place">{{ event.place }}</div>
+                <!--<div class="place">{{ event.place }}</div>-->
                 </div>
             </div>
 
@@ -73,7 +73,7 @@ h2 {
 #events {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
     height: 75vh;
 }
@@ -113,6 +113,7 @@ h2 {
 }
 
 .name {
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: 30px;
     z-index: 12;

@@ -19,18 +19,20 @@ export default {
             const ics = await response.text();
             const data = await ical.parseICS(ics);
             const today = new Date()
+            let count = 0; // Counter for limiting the number of events pushed
             for (let k in data) {
                 if (data.hasOwnProperty(k)) {
                     var ev = data[k];
                     if (data[k].type == "VEVENT") {
                         const eventStartDate = new Date(ev.start)
-                        if (eventStartDate > today) {
+                        if (eventStartDate > today && count < 3) { // Limiting to 3 events
                             this.events.push({
                                 event: ev.summary,
                                 startdate: ev.start, //eller eventStartDate går med båda.
                                 endtime: ev.end,
                                 date: ev.start.toLocaleDateString("fi-FI"),
                             });
+                            count++; // Increment the counter
                         }
                     }
                 }
@@ -89,13 +91,18 @@ export default {
 </template>
 
 <style scoped>
+* {
+    box-sizing: border-box;
+}
+
 .events {
     height: 100%;
-    width:85%;
+    width:100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    overflow: hidden;
 }
 
 .eventText {

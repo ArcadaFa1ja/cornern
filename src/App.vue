@@ -12,7 +12,7 @@ export default {
       kideUrl: "https://api.kide.app/api/companies/8216a1bc-760d-407b-9c77-5e26a041a25c",
       eventCalendar: "https://corsproxy.io/?https://calendar.google.com/calendar/ical/tlk.fi_j78ecj51va7764f75fhkrotsrc%40group.calendar.google.com/public/basic.ics",
       cornerCalendar: "https://corsproxy.io/?https://calendar.google.com/calendar/ical/tlk.fi_nnc4oospos16o4aci02v9o7cr8%40group.calendar.google.com/public/basic.ics",
-      currentCornerEvent: [{event: "No event", date: "No date"}],
+      currentCornerEvent: [{ event: "No event", date: "No date" }],
     }
   },
   components: {
@@ -24,7 +24,7 @@ export default {
   },
 
   methods: {
-    updateCornerEvent(evt){
+    updateCornerEvent(evt) {
       console.log("update");
       this.currentCornerEvent = [evt];
     }
@@ -74,7 +74,7 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   text-align: center;
   color: white;
 }
@@ -87,13 +87,14 @@ export default {
   align-items: center;
   background-color: rgba(0, 0, 0, .5);
   border-radius: 15px;
-  margin:25px;
+  margin: 25px;
 }
 
 #componentKide {
+  margin-top: auto;
   flex-basis: 33%;
-  height:fit-content;
-  background-color:transparent;
+  height: fit-content;
+  background-color: transparent;
 }
 
 #componentEventCalendar {
@@ -101,9 +102,8 @@ export default {
 
 }
 
-.componentBase h2{
-  margin:50px 0 0 0;
-  font-size:40px;
+.componentBase h2 {
+  font-size: 40px;
   font-weight: 400;
 }
 
